@@ -158,6 +158,10 @@ class _PaystackPayNowState extends State<PaystackPayNow> {
                     print('the paystack current url: ${navigation.url}');
                   }
 
+                  // remote question mark from the url
+                  final questionMarkIndex = navigation.url.indexOf('?');
+                  print('the paystack current url: $questionMarkIndex');
+
                   if (navigation.url ==
                       'https://staging-api.escalatetechnologies.net/v1/payment/callback') {
                     /// Check transaction status before closing the view back to the previous screen.
