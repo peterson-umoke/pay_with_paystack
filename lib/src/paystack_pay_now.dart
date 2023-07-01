@@ -155,7 +155,7 @@ class _PaystackPayNowState extends State<PaystackPayNow> {
                 javascriptMode: JavascriptMode.unrestricted,
                 navigationDelegate: (navigation) async {
                   if (kDebugMode) {
-                    print('the current url: ${navigation.url}');
+                    print('the paystack current url: ${navigation.url}');
                   }
 
                   if (navigation.url ==
