@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:webview_flutter/webview_flutter.dart';
@@ -153,6 +154,10 @@ class _PaystackPayNowState extends State<PaystackPayNow> {
                 initialUrl: snapshot.data!.authUrl,
                 javascriptMode: JavascriptMode.unrestricted,
                 navigationDelegate: (navigation) async {
+                  if (kDebugMode) {
+                    print('the current url: ${navigation.url}');
+                  }
+
                   if (navigation.url == 'https://standard.paystack.co/close') {
                     /// Check transaction status before closing the view back to the previous screen.
                     await _checkTransactionStatus(snapshot.data!.reference)
