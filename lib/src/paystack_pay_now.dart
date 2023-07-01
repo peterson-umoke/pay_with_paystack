@@ -158,6 +158,15 @@ class _PaystackPayNowState extends State<PaystackPayNow> {
                     print('the current url: ${navigation.url}');
                   }
 
+                  if (navigation.url ==
+                      'https://staging-api.escalatetechnologies.net/v1/payment/callback') {
+                    /// Check transaction status before closing the view back to the previous screen.
+                    await _checkTransactionStatus(snapshot.data!.reference)
+                        .then((value) {
+                      return Navigator.of(context).pop();
+                    });
+                  }
+
                   if (navigation.url == 'https://standard.paystack.co/close') {
                     /// Check transaction status before closing the view back to the previous screen.
                     await _checkTransactionStatus(snapshot.data!.reference)
